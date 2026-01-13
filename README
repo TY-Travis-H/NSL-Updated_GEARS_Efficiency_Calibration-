@@ -4,4 +4,6 @@ Used the *.dat files as samples to create your own data files.
 
 To execute the file, run the following command
 
-   { echo "1"; echo "Co60_abs_eff_nolog.dat"; echo "3"; echo "Eu152_rel_eff_nolog.dat"; echo "Ba133_rel_eff_nolog.dat";  echo "Co56_rel_eff_nolog.dat"; echo "180"; } | python main.py
+{ echo "1"; echo "Co60_abs_eff_nolog.dat"; echo "3"; echo "Eu152_rel_eff_nolog.dat"; echo "Ba133_rel_eff_nolog.dat";  echo "Co56_rel_eff_nolog.dat"; echo "180"; } | python fixed-main.py
+
+The changes to the main.py from Usman's thesis is the addition of scalar variables assigned with i-th element within an array of data points. This was done for all "for" loops that contained the data arrays. 
