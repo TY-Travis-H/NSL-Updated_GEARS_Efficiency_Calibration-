@@ -1,0 +1,7 @@
+This program executes the procedure given in the paper 'A method for establishing absolute full-energy peak efficiency and its confidence interval for HPGe detectors' published in Nuclear Instruments and Methods in Physics Research A (https://doi.org/10.1016/j.nima.2015.08.071).
+
+Used the *.dat files as samples to create your own data files.
+
+To execute the file, run the following command
+
+   { echo "1"; echo "Co60_abs_eff_nolog.dat"; echo "3"; echo "Eu152_rel_eff_nolog.dat"; echo "Ba133_rel_eff_nolog.dat";  echo "Co56_rel_eff_nolog.dat"; echo "180"; } | python main.py
