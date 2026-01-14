@@ -4,6 +4,8 @@ Used the *.dat files as samples to create your own data files. The data columns,
 All *.dat files use tab-delimited values (\t); space-delimited entries would cause parsing arrors. 
 This convention is enforced in the "ReadData" function (line 15) of fixed-main.py.
 
+The "combineDataSets" function consolidate the three data types from all data sets into three arrays: mergedDataX (energies), mergedDataY (efficiencies), and mergedDataeY (efficiency uncertainties).
+
 To execute the file, run the following command:
 
 { echo "1"; echo "Co60_abs_eff_nolog.dat"; echo "3"; echo "Eu152_rel_eff_nolog.dat"; echo "Ba133_rel_eff_nolog.dat";  echo "Co56_rel_eff_nolog.dat"; echo "180"; } | python fixed-main.py
