@@ -1,9 +1,18 @@
 This program executes the procedure given in the paper 'A method for establishing absolute full-energy peak efficiency and its confidence interval for HPGe detectors' published in Nuclear Instruments and Methods in Physics Research A (https://doi.org/10.1016/j.nima.2015.08.071).
 
-Used the *.dat files as samples to create your own data files.
+Used the *.dat files as samples to create your own data files. The data columns, from left to right, represent the energies (keV), efficiencies, and their associated efficiency errors. All *.dat files use tab-delimited values (\t); space-delimited entries would cause parsing arrors. This convention is enforced in the "ReadData" function (line 15) of fixed-main.py. 
 
 To execute the file, run the following command
 
 { echo "1"; echo "Co60_abs_eff_nolog.dat"; echo "3"; echo "Eu152_rel_eff_nolog.dat"; echo "Ba133_rel_eff_nolog.dat";  echo "Co56_rel_eff_nolog.dat"; echo "180"; } | python fixed-main.py
 
-The changes to the main.py from Usman's thesis is the addition of scalar variables assigned with i-th element within an array of data points. This was done for all "for" loops that contained the data arrays. For example, the original had equations that has the array as the variable: matrixX[i][0] = (dataY[i]/dataeY[i])*(log(dataX[i]) - log(x0))**2. However, by adding scalar variables such as xi=float(dataX[i]), yi=float(dataY[i]), eyi=float(dataeY[i]), and wi=yi/eyi, the equation becomes: matrixX[i][0]=wi*(log(xi)-log(x0))**2 
+The modifications made to main.py from Usman's thesis is the introduction of scalar variables assigned with i-th element within the data arrays. These scalar assignments were applied acrross all "for" loops that operate on the data arrays. In the original implementation, array elements were used directly within expression, for example:
+matrixX[i][0] = (dataY[i]/dataeY[i])*(log(dataX[i]) - log(x0))**2. 
+By defining scalar variables such as 
+xi=float(dataX[i]) 
+yi=float(dataY[i])
+eyi=float(dataeY[i])
+wi=yi/eyi,
+the equation becomes: 
+matrixX[i][0]=wi*(log(xi)-log(x0))**2 
+This approach improves numerical clarity and avoids implicit array-to-scalar conversions.
